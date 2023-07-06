@@ -2,7 +2,7 @@ const express = require('express');
 const sign = require('./routes/signup');
 const mongoose = require('mongoose');
 const app = express();
-const port = 4000;
+const port = 9100;
 
 mongoose.connect('mongodb://localhost:27017/cashcommunity')
 
@@ -15,6 +15,6 @@ app.get('/' , (req , res) => {
 });
 
 
-app.listen(4000 , () => {
+app.listen(port , () => {
     console.log(`The server is running on port ${port}`);
 });
