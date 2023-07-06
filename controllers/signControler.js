@@ -39,7 +39,7 @@ exports.login = async (req , res) => {
                      if(error) {
                          return res.status(404).send(error)
                      }
-                     return res.status(200).send(keys)             
+                     return res.status(200).json({id:user._id ,name : user.name, jwt : keys})             
                  })
             }
             else {
