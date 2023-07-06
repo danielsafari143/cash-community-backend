@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const {validationResult } = require('express-validator');
-const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
 const User = require('../models/signup')
 
