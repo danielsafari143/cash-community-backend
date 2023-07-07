@@ -5,7 +5,9 @@ const account = new Schema({
     user : {type : Schema.Types.ObjectId , ref : 'registers' , required: true},
     accountName : {type : String , required : true},
     accountType : {type: String , required : true},
-    date : {type : Date , default : Date.now()}
+    date : {type : Date , default : Date.now()},
+    expenses : [Schema.Types.Mixed],
+    incomes : [Schema.Types.Mixed]
 });
 
 module.exports = model('account' , account);

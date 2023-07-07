@@ -35,7 +35,7 @@ exports.login = async (req , res) => {
     if(user){
         bcrypt.compare(password , user.password , (err , result) => {
             if(result){
-                 Jwt.sign(email , 'secret'  , (error , keys) => {
+                 Jwt.sign(email , process.env.SECRET_KEY , (error , keys) => {
                      if(error) {
                          return res.status(404).send(error)
                      }

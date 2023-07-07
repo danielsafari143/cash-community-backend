@@ -7,6 +7,6 @@ router.get('/user/accounts/all/:id', param('id').isString().notEmpty().withMessa
 
 router.get('/user/accounts/:userId',param('userId').isString().notEmpty().withMessage('Incoorrect id').escape(), accountControllers.getAllAccounts);
 
-router.post('/user/account/:userId',param('userId').isString().notEmpty().withMessage('Incoorrect id').escape(),accountControllers.postAccount);
+router.post('/user/accounts/:userId',param('userId').isString().notEmpty().withMessage('Incoorrect id').escape(),accountControllers.postAccount);
 
 module.exports = router;
