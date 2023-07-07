@@ -2,19 +2,31 @@
   "name": "awesomebackend",
   "version": "1.0.0",
   "description": "this project is the backend part of the first project ",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon App.js"
+    "start": "nodemon app"
   },
   "author": "SAFARI HAMULI",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22"
+    "nanoid": "^4.0.2",
+    "nodemon": "^2.0.22",
+    "passport": "^0.6.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "^4.0.1",
+    "uuid": "^9.0.0"
   }
 }

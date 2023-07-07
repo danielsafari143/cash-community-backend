@@ -1,20 +1,27 @@
 const express = require('express');
 const sign = require('./routes/signup');
+const account = require('./routes/account')
+const expenses = require('./routes/expenses')
+const incomes = require('./routes/incomes')
 const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config()
 const app = express();
-const port = 4000;
+const port = process.env.PORT;
 
-mongoose.connect('mongodb://localhost:27017/cashcommunity')
+try {
+    mongoose.connect(process.env.SERVER)
+} catch (error) {
+    res.json({error})
+}
 
 app.use(express.json());
+app.use(cors());
 app.use('/' , sign);
+app.use('/' , account);
+app.use('/' , expenses);
+app.use('/' , incomes)
 
-
-app.get('/' , (req , res) => {
-    res.send("Data")
-});
-
-
-app.listen(4000 , () => {
+app.listen(port , () => {
     console.log(`The server is running on port ${port}`);
 });
