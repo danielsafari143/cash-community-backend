@@ -22,6 +22,10 @@ app.use('/' , account);
 app.use('/' , expenses);
 app.use('/' , incomes)
 
+app.get('/' , (req , res ) => {
+    res.status(200).json({msg : "Welcom"})
+})
+
 app.listen(port , () => {
     console.log(`The server is running on port ${port}`);
 });
