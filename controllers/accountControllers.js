@@ -6,7 +6,7 @@ exports.getAllAccounts = async (req , res , next ) => {
         const accounts = await Account.find({user : userId});
         res.status(200).json({accounts})
     } catch (error) {
-        console.log(error)
+        return res.status(404).json({msg:"errors"})
     }
 };
 
@@ -16,7 +16,7 @@ exports.getAccount = async (req , res , next) => {
         const account = await Account.findOne({_id : id});
         res.status(200).json(account)
     } catch (error) {
-        console.log(error)
+        return res.status(404).json({msg:"errors"})
     }
 };
 
@@ -33,6 +33,6 @@ exports.postAccount = async (req , res , next ) => {
     await accounts.save();
     return res.status(200).json({msg : "Created"})
    }catch(e){
-    console.log(e)
+    return res.status(404).json({msg:"errors"})
    }
 };
