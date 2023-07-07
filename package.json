@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "this project is the backend part of the first project ",
   "main": "app.js",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "scripts": {
     "test": "test",
     "start": "nodemon app"
