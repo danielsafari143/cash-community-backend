@@ -26,7 +26,7 @@ exports.signup = asyncHandler(async (req , res , next) => {
         })
         return res.json({result : "send"}).status(200);
     }
-    return res.json({ errors: result.array() });
+    return res.status(400).json({ errors: result.array() });
 });
 
 exports.login = async (req , res) => {
