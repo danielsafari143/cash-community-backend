@@ -30,24 +30,28 @@ exports.signup = asyncHandler(async (req , res , next) => {
 });
 
 exports.login = async (req , res) => {
-    const {email , password} = req.body;
-    const user = await User.findOne({email : email});
-    if(user){
-        bcrypt.compare(password , user.password , (err , result) => {
-            if(result){
-                 Jwt.sign(email , process.env.SECRET_KEY , (error , keys) => {
-                     if(error) {
-                         return res.status(404).send(error)
-                     }
-                     return res.status(200).json({id:user._id ,name : user.name, jwt : keys})             
-                 })
-            }
-            else {
-             return res.status(403).json({result : {msg : "Incorrect password"}})
-            }
-         })
+    const result = validationResult(req);
+    if(result.isEmpty()){
+        const {email , password} = req.body;
+        const user = await User.findOne({email : email});
+        if(user){
+            bcrypt.compare(password , user.password , (err , result) => {
+                if(result){
+                     Jwt.sign(email , process.env.SECRET_KEY , (error , keys) => {
+                         if(error) {
+                             return res.status(404).send(error)
+                         }
+                         return res.status(200).json({id:user._id ,name : user.name, jwt : keys})             
+                     })
+                }
+                else {
+                 return res.status(400).json({result : {msg : "Incorrect password"}})
+                }
+             })
+        }
+        else {
+            return res.status(400).json({result : {msg : "Email adress not found"}})
+        }
     }
-    else {
-        return res.status(403).json({result : {msg : "Email adress not found"}})
-    }
+    return res.status(400).json({ errors: result.array() });
 }

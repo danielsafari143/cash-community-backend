@@ -10,6 +10,8 @@ body('email').isEmail().withMessage('Not a valid e-mail address').trim().escape(
 body('password').isLength({min:6}).withMessage('Not a valid password').trim().escape(),
 signControllers.signup);
 
-router.post('/users/login' , signControllers.login)
+router.post('/users/login',body('email').isEmail().withMessage('Not a valid e-mail address').trim().escape(),
+body('password').isLength({min:6}).withMessage('Not a valid password').trim().escape(),
+signControllers.login)
 
 module.exports = router;
